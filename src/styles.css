@@ -1,0 +1,175 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* GLOBAL */
+body {
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.gray {
+    background: #f5f5f5;
+}
+
+/* HEADER */
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.logo img {
+    height: 120px;
+}
+
+.nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.nav .btn {
+    background: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* HERO */
+.hero {
+    height: 450px;
+    background: url('images/hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* BUTTONS */
+.btn {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+}
+
+/* PROGRAMS */
+.programs {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 32%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* DONATE */
+.donate {
+    background: #007bff;
+    color: white;
+}
+
+.donate .btn-primary {
+    background: white;
+    color: #007bff;
+}
+
+/* FOOTER */
+.footer {
+    background: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .programs {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+.lang-switch button {
+    margin-left: 5px;
+    padding: 6px 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact {
+    margin-top: 10px;
+}
