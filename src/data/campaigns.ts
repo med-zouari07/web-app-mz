@@ -79,6 +79,6 @@ export const campaigns: Campaign[] = [
     descriptionEn: 'Respond to disasters and humanitarian crises.',
     descriptionFr: 'Réponse rapide aux catastrophes et crises humanitaires.',
     descriptionAr: 'الاستجابة السريعة للكوارث والأزمات الإنسانية',
-    image: 'https://images.pexels.com/photos/5799837/pexels-photo-5799837.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/7659453/pexels-photo-7659453.jpeg',
   },
 ];
