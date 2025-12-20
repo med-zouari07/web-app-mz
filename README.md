@@ -9,7 +9,7 @@ A modern, multilingual charity donation platform for Association Bon Voisinage (
 - **Responsive Design**: Works perfectly on mobile, tablet, and desktop
 - **Modern UI**: Beautiful, professional design with smooth transitions
 - **Donation System**: Ready for CMI payment gateway integration
-- **Campaign Management**: Multiple charity campaigns (Orphan Support, Food Aid, Emergency Relief)
+- **Campaign Management**: Multiple charity campaigns (Orphan Support, Clothing & Food Aid, Blood Donation, Breakfast During Exams, Children's Celebrations, Community Week, Sports Field, Emergency Relief)
 
 ## Technology Stack
 
