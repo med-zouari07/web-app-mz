@@ -39,6 +39,20 @@ export const translations: Record<string, Translations> = {
     },
     footer: {
       copyright: '© 2025 Association Bon Voisinage. All rights reserved.',
+      contact: 'Contact Us',
+      address: 'Address',
+      phone: 'Phone',
+      followUs: 'Follow Us',
+    },
+    contact: {
+      title: 'Contact Us',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Send Message',
+      sending: 'Sending...',
+      success: 'Message sent successfully!',
+      error: 'Failed to send message. Please try again.',
     },
   },
   fr: {
@@ -79,6 +93,20 @@ export const translations: Record<string, Translations> = {
     },
     footer: {
       copyright: '© 2025 Association Bon Voisinage. Tous droits réservés.',
+      contact: 'Nous contacter',
+      address: 'Adresse',
+      phone: 'Téléphone',
+      followUs: 'Suivez-nous',
+    },
+    contact: {
+      title: 'Nous contacter',
+      name: 'Nom',
+      email: 'Email',
+      message: 'Message',
+      send: 'Envoyer le message',
+      sending: 'Envoi...',
+      success: 'Message envoyé avec succès!',
+      error: 'Échec de l\'envoi du message. Veuillez réessayer.',
     },
   },
   ar: {
@@ -119,6 +147,20 @@ export const translations: Record<string, Translations> = {
     },
     footer: {
       copyright: '© 2025 جمعية حسن الجوار. جميع الحقوق محفوظة.',
+      contact: 'اتصل بنا',
+      address: 'العنوان',
+      phone: 'الهاتف',
+      followUs: 'تابعنا',
+    },
+    contact: {
+      title: 'اتصل بنا',
+      name: 'الاسم',
+      email: 'البريد الإلكتروني',
+      message: 'الرسالة',
+      send: 'إرسال الرسالة',
+      sending: 'جاري الإرسال...',
+      success: 'تم إرسال الرسالة بنجاح!',
+      error: 'فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.',
     },
   },
 };

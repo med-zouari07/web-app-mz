@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Programs from './components/Programs';
 import DonationForm from './components/DonationForm';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <About translations={t} />
       <Programs language={language} translations={t} />
       <DonationForm language={language} translations={t} />
+      <Contact language={language} translations={t} />
       <Footer translations={t} />
     </div>
   );
