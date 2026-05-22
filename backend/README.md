@@ -12,7 +12,7 @@ Complete Node.js/Express backend for handling CMI  payment gateway integration f
 - Payment status tracking
 - Test and production modes
 
-## Prerequisites
+### Prerequisites
 
 - Node.js v16+ and npm
 - Supabase account with project
