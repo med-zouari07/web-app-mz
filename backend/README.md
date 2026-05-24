@@ -1,6 +1,6 @@
 # Bon Voisinage Backend - Payment Processing Server
 
-Complete Node.js/Express backend for handling CMI  payment gateway integration for donations.
+Complete Node.js/Express backend for handling CMI (Crédit Mutuel Investissement) payment gateway integration for donations.
 
 ## Features
 
@@ -12,7 +12,7 @@ Complete Node.js/Express backend for handling CMI  payment gateway integration f
 - Payment status tracking
 - Test and production modes
 
-### Prerequisites
+## Prerequisites
 
 - Node.js v16+ and npm
 - Supabase account with project
