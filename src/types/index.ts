@@ -9,6 +9,11 @@ export interface Campaign {
   descriptionFr: string;
   descriptionEn: string;
   image: string;
+  detailAr?: string;
+  detailFr?: string;
+  detailEn?: string;
+  goal?: number;
+  beneficiaries?: string;
 }
 
 export interface Translations {

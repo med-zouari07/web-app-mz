@@ -23,6 +23,10 @@ export const translations: Record<string, Translations> = {
     },
     programs: {
       title: 'Our Programs',
+      readMore: 'Read More',
+      close: 'Close',
+      goal: 'Goal',
+      beneficiaries: 'Beneficiaries',
     },
     donate: {
       title: 'Make a Donation',
@@ -77,6 +81,10 @@ export const translations: Record<string, Translations> = {
     },
     programs: {
       title: 'Nos Programmes',
+      readMore: 'En savoir plus',
+      close: 'Fermer',
+      goal: 'Objectif',
+      beneficiaries: 'Bénéficiaires',
     },
     donate: {
       title: 'Faire un don',
@@ -131,6 +139,10 @@ export const translations: Record<string, Translations> = {
     },
     programs: {
       title: 'برامجنا',
+      readMore: 'اقرأ المزيد',
+      close: 'إغلاق',
+      goal: 'الهدف',
+      beneficiaries: 'المستفيدون',
     },
     donate: {
       title: 'قدم تبرعاً',

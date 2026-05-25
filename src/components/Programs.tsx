@@ -17,7 +17,7 @@ export default function Programs({ language, translations }: ProgramsProps) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {campaigns.map((campaign) => (
-            <ProgramCard key={campaign.id} campaign={campaign} language={language} />
+            <ProgramCard key={campaign.id} campaign={campaign} language={language} translations={translations} />
           ))}
         </div>
       </div>
