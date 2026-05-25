@@ -31,15 +31,6 @@ export const translations: Record<string, Translations> = {
     donate: {
       title: 'Make a Donation',
       subtitle: 'Your generosity can save lives.',
-      amount: 'Donation Amount (MAD)',
-      customAmount: 'Enter custom amount',
-      fullName: 'Full Name',
-      email: 'Email Address',
-      phone: 'Phone Number',
-      message: 'Message (Optional)',
-      selectCampaign: 'Select Campaign',
-      submit: 'Proceed to Payment',
-      processing: 'Processing...',
     },
     footer: {
       copyright: '© 2025 Association Bon Voisinage. All rights reserved.',
@@ -89,15 +80,6 @@ export const translations: Record<string, Translations> = {
     donate: {
       title: 'Faire un don',
       subtitle: 'Votre générosité peut sauver des vies.',
-      amount: 'Montant du don (MAD)',
-      customAmount: 'Entrez un montant personnalisé',
-      fullName: 'Nom complet',
-      email: 'Adresse e-mail',
-      phone: 'Numéro de téléphone',
-      message: 'Message (Facultatif)',
-      selectCampaign: 'Sélectionner une campagne',
-      submit: 'Procéder au paiement',
-      processing: 'Traitement...',
     },
     footer: {
       copyright: '© 2025 Association Bon Voisinage. Tous droits réservés.',
@@ -147,15 +129,6 @@ export const translations: Record<string, Translations> = {
     donate: {
       title: 'قدم تبرعاً',
       subtitle: 'سخاؤك يمكن أن ينقذ الأرواح',
-      amount: 'مبلغ التبرع (درهم)',
-      customAmount: 'أدخل مبلغاً مخصصاً',
-      fullName: 'الاسم الكامل',
-      email: 'البريد الإلكتروني',
-      phone: 'رقم الهاتف',
-      message: 'رسالة (اختياري)',
-      selectCampaign: 'اختر حملة',
-      submit: 'الانتقال إلى الدفع',
-      processing: 'جاري المعالجة...',
     },
     footer: {
       copyright: '© 2025 جمعية حسن الجوار. جميع الحقوق محفوظة.',

@@ -1,91 +1,38 @@
 import { useState } from 'react';
-import { Heart, CreditCard } from 'lucide-react';
+import { Heart, Building2, Copy, Check } from 'lucide-react';
 import { Language } from '../types';
-import { campaigns } from '../data/campaigns';
 
 interface DonationFormProps {
   language: Language;
   translations: any;
 }
 
-const predefinedAmounts = [100, 200, 500, 1000, 2000, 5000];
-
 export default function DonationForm({ language, translations }: DonationFormProps) {
-  const [amount, setAmount] = useState<number | string>(500);
-  const [customAmount, setCustomAmount] = useState('');
-  const [selectedCampaign, setSelectedCampaign] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const handleAmountClick = (value: number) => {
-    setAmount(value);
-    setCustomAmount('');
+  const ribInfo = {
+    bank: 'Attijariwafa Bank',
+    agency: 'Ouled Berhil',
+    rib: '007 780 0001234000000015 78',
+    iban: 'MA64 007 780 0001234000000015 78',
+    swift: 'MAFAMABCXXX',
   };
 
-  const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCustomAmount(value);
-    if (value) {
-      setAmount(parseFloat(value) || 0);
+  const handleCopy = async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(field);
+      setTimeout(() => setCopied(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsProcessing(true);
-
-    const finalAmount = customAmount ? parseFloat(customAmount) : (typeof amount === 'number' ? amount : parseFloat(String(amount)));
-
-    if (!finalAmount || finalAmount < 10) {
-      alert(language === 'ar' ? 'الحد الأدنى للتبرع هو 10 درهم' : language === 'fr' ? 'Le don minimum est de 10 MAD' : 'Minimum donation is 10 MAD');
-      setIsProcessing(false);
-      return;
-    }
-
-    if (!fullName || !email || !phone) {
-      alert(language === 'ar' ? 'الرجاء ملء جميع الحقول المطلوبة' : language === 'fr' ? 'Veuillez remplir tous les champs requis' : 'Please fill all required fields');
-      setIsProcessing(false);
-      return;
-    }
-
-    const donationData = {
-      amount: finalAmount,
-      campaign: selectedCampaign,
-      fullName,
-      email,
-      phone,
-      message,
-      language,
-      timestamp: new Date().toISOString(),
-    };
-
-    console.log('Donation Data:', donationData);
-
-    setTimeout(() => {
-      alert(
-        language === 'ar'
-          ? 'شكراً لك! يرجى الاتصال بنا على 0666932107 لإتمام التبرع'
-          : language === 'fr'
-          ? 'Merci! Veuillez nous contacter au 0666932107 pour finaliser votre don'
-          : 'Thank you! Please contact us at 0666932107 to complete your donation'
-      );
-      setIsProcessing(false);
-      setAmount(500);
-      setCustomAmount('');
-      setSelectedCampaign('');
-      setFullName('');
-      setEmail('');
-      setPhone('');
-      setMessage('');
-    }, 1500);
-  };
+  const isRTL = language === 'ar';
 
   return (
-    <section id="donate" className="py-16 bg-gradient-to-br from-blue-600 to-blue-800">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="donate" className="py-16 bg-gradient-to-br from-emerald-600 to-teal-700">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center text-white mb-12">
           <Heart className="w-16 h-16 mx-auto mb-4" />
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -94,142 +41,156 @@ export default function DonationForm({ language, translations }: DonationFormPro
           <p className="text-xl opacity-90">{translations.donate.subtitle}</p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-3">
-                {translations.donate.amount}
+        {/* RIB Information Card */}
+        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-8">
+          <div className={`flex items-center gap-3 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <Building2 className="w-8 h-8 text-emerald-600" />
+            <h3 className="text-2xl font-bold text-gray-900">
+              {language === 'ar' ? 'معلومات الحساب البنكي' :
+               language === 'fr' ? 'Informations Bancaires' :
+               'Bank Account Information'}
+            </h3>
+          </div>
+
+          <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+            {/* Bank Name */}
+            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                {language === 'ar' ? 'البنك' : language === 'fr' ? 'Banque' : 'Bank'}
               </label>
-              <div className="grid grid-cols-3 gap-3 mb-4">
-                {predefinedAmounts.map((value) => (
-                  <button
-                    key={value}
-                    type="button"
-                    onClick={() => handleAmountClick(value)}
-                    className={`py-3 px-4 rounded-lg font-semibold transition-all ${
-                      amount === value && !customAmount
-                        ? 'bg-blue-600 text-white shadow-lg scale-105'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {value} MAD
-                  </button>
-                ))}
-              </div>
-              <input
-                type="number"
-                value={customAmount}
-                onChange={handleCustomAmountChange}
-                placeholder={translations.donate.customAmount}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                min="10"
-              />
+              <p className="text-lg font-bold text-gray-900">{ribInfo.bank}</p>
             </div>
 
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                {translations.donate.selectCampaign}
+            {/* Agency */}
+            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
+                {language === 'ar' ? 'الوكالة' : language === 'fr' ? 'Agence' : 'Agency'}
               </label>
-              <select
-                value={selectedCampaign}
-                onChange={(e) => setSelectedCampaign(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="">
-                  {language === 'ar'
-                    ? 'حدد حملة (اختياري)'
-                    : language === 'fr'
-                    ? 'Sélectionner (optionnel)'
-                    : 'Select (optional)'}
-                </option>
-                {campaigns.map((campaign) => (
-                  <option key={campaign.id} value={campaign.id}>
-                    {language === 'ar'
-                      ? campaign.titleAr
-                      : language === 'fr'
-                      ? campaign.titleFr
-                      : campaign.titleEn}
-                  </option>
-                ))}
-              </select>
+              <p className="text-lg font-bold text-gray-900">{ribInfo.agency}</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">
-                  {translations.donate.fullName} *
-                </label>
-                <input
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">
-                  {translations.donate.email} *
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
+            {/* RIB */}
+            <div className="bg-emerald-50 rounded-lg p-4 border-2 border-emerald-200">
+              <div className={`flex items-start justify-between gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className="flex-1">
+                  <label className="block text-sm font-semibold text-emerald-700 mb-1">
+                    {language === 'ar' ? 'رقم الحساب البنكي (RIB)' :
+                     language === 'fr' ? 'RIB' : 'Bank Account Number (RIB)'}
+                  </label>
+                  <p className="text-xl font-bold text-emerald-900 font-mono tracking-wide">
+                    {ribInfo.rib}
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleCopy(ribInfo.rib, 'rib')}
+                  className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium"
+                  title={language === 'ar' ? 'نسخ' : language === 'fr' ? 'Copier' : 'Copy'}
+                >
+                  {copied === 'rib' ? (
+                    <>
+                      <Check className="w-5 h-5" />
+                      {language === 'ar' ? 'تم النسخ' : language === 'fr' ? 'Copié!' : 'Copied!'}
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-5 h-5" />
+                      {language === 'ar' ? 'نسخ' : language === 'fr' ? 'Copier' : 'Copy'}
+                    </>
+                  )}
+                </button>
               </div>
             </div>
 
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                {translations.donate.phone} *
-              </label>
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+            {/* IBAN */}
+            <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
+              <div className={`flex items-start justify-between gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className="flex-1">
+                  <label className="block text-sm font-semibold text-blue-700 mb-1">
+                    IBAN
+                  </label>
+                  <p className="text-lg font-bold text-blue-900 font-mono tracking-wide">
+                    {ribInfo.iban}
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleCopy(ribInfo.iban, 'iban')}
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                  title={language === 'ar' ? 'نسخ' : language === 'fr' ? 'Copier' : 'Copy'}
+                >
+                  {copied === 'iban' ? (
+                    <>
+                      <Check className="w-5 h-5" />
+                      {language === 'ar' ? 'تم النسخ' : language === 'fr' ? 'Copié!' : 'Copied!'}
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-5 h-5" />
+                      {language === 'ar' ? 'نسخ' : language === 'fr' ? 'Copier' : 'Copy'}
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
 
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                {translations.donate.message}
-              </label>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-              />
+            {/* SWIFT/BIC */}
+            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className={`flex items-start justify-between gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <div className="flex-1">
+                  <label className="block text-sm font-semibold text-gray-600 mb-1">
+                    SWIFT/BIC
+                  </label>
+                  <p className="text-lg font-bold text-gray-900 font-mono tracking-wide">
+                    {ribInfo.swift}
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleCopy(ribInfo.swift, 'swift')}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors font-medium"
+                  title={language === 'ar' ? 'نسخ' : language === 'fr' ? 'Copier' : 'Copy'}
+                >
+                  {copied === 'swift' ? (
+                    <>
+                      <Check className="w-5 h-5" />
+                      {language === 'ar' ? 'تم النسخ' : language === 'fr' ? 'Copié!' : 'Copied!'}
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-5 h-5" />
+                      {language === 'ar' ? 'نسخ' : language === 'fr' ? 'Copier' : 'Copy'}
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
+          </div>
 
-            <button
-              type="submit"
-              disabled={isProcessing}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
-            >
-              {isProcessing ? (
-                <>{translations.donate.processing}</>
-              ) : (
-                <>
-                  <CreditCard className="w-6 h-6" />
-                  {translations.donate.submit}
-                </>
-              )}
-            </button>
-
-            <p className="text-center text-sm text-gray-500 mt-4">
+          {/* Instructions */}
+          <div className={`mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded ${isRTL ? 'border-r-4 border-l-0' : ''}`}>
+            <p className="text-gray-700 text-base leading-relaxed">
               {language === 'ar'
-                ? 'الدفع الآمن عبر CMI - البنك التجاري وفا بنك'
+                ? 'يمكنكم إيداع تبرعاتكم مباشرة في حسابنا البنكي. يرجى إرسال إيصال التحويل عبر الواتساب على الرقم 0666932107 لأجل التعامل مع تبرعكم وتوجيهه للبرنامج المطلوب.'
                 : language === 'fr'
-                ? 'Paiement sécurisé via CMI - Attijariwafa Bank'
-                : 'Secure payment via CMI - Attijariwafa Bank'}
+                ? 'Vous pouvez déposer vos dons directement sur notre compte bancaire. Veuillez envoyer le reçu de virement par WhatsApp au 0666932107 pour que nous puissions traiter votre don et l\'affecter au programme souhaité.'
+                : 'You can deposit your donations directly into our bank account. Please send the transfer receipt via WhatsApp to 0666932107 so we can process your donation and direct it to the desired program.'}
             </p>
-          </form>
+          </div>
+        </div>
+
+        {/* Alternative Contact Info */}
+        <div className="text-center text-white">
+          <p className="text-lg font-semibold mb-2">
+            {language === 'ar' ? 'للاستفسارات والأسئلة' :
+             language === 'fr' ? 'Pour toute question' :
+             'For inquiries and questions'}
+          </p>
+          <p className="text-base opacity-90">
+            {language === 'ar' ? 'اتصل بنا على: ' :
+             language === 'fr' ? 'Contactez-nous au: ' :
+             'Contact us at: '}
+            <a href="tel:+212666932107" className="font-bold hover:underline">
+              0666932107
+            </a>
+          </p>
         </div>
       </div>
     </section>
