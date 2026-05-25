@@ -8,7 +8,7 @@ export const translations: Record<string, Translations> = {
       donate: 'Donate',
     },
     hero: {
-      title: 'Give Your Zakat. Change Lives.',
+      title: 'Give Your Sadaka. Change Lives.',
       subtitle: 'Your donation reaches those who need it most.',
       cta: 'Donate Now',
     },
@@ -57,7 +57,7 @@ export const translations: Record<string, Translations> = {
       donate: 'Don',
     },
     hero: {
-      title: 'Donnez votre Zakat, changez des vies',
+      title: 'Donnez votre Sadaka, changez des vies',
       subtitle: 'Votre don atteint ceux qui en ont le plus besoin',
       cta: 'Faire un don',
     },
@@ -106,7 +106,7 @@ export const translations: Record<string, Translations> = {
       donate: 'تبرع',
     },
     hero: {
-      title: 'ساهم بزكاتك، وغيّر حياة الناس',
+      title: 'ساهم بصدقتك، وغيّر حياة الناس',
       subtitle: 'تبرعك يصل إلى من هم في أمسّ الحاجة',
       cta: 'تبرع الآن',
     },
