@@ -1,5 +1,6 @@
 interface HeroProps {
   translations: any;
+  
 }
 
 export default function Hero({ translations }: HeroProps) {
