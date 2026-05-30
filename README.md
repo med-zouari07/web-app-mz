@@ -1,3 +1,13 @@
+# Deployment 
+ # 1. Build the image
+docker build -t bonvoisinage .
+
+# 2. Tag it with your Docker Hub repository and version
+docker tag bonvoisinage:latest zouarimed07/bonvoisinage:1.0
+
+# 3. Push it
+docker push zouarimed07/bonvoisinage:1.0
+
 # Association Bon Voisinage - Charity Donation Platform
 
 A modern, multilingual charity donation platform for Association Bon Voisinage (جمعية حسن الجوار) in Ouled Berhil, Taroudant Province, Morocco.
