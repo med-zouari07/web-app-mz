@@ -13,9 +13,9 @@ export default function DonationForm({ language, translations }: DonationFormPro
   const ribInfo = {
     bank: 'Attijariwafa Bank',
     agency: 'Ouled Berhil',
-    rib: '007 780 0001234000000015 78',
-    iban: 'MA64 007 780 0001234000000015 78',
-    swift: 'MAFAMABCXXX',
+    rib: '********************************',
+    iban: '*******************************',
+    swift: '********',
   };
 
   const handleCopy = async (text: string, field: string) => {
