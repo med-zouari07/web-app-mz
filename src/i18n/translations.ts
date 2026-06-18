@@ -8,7 +8,7 @@ export const translations: Record<string, Translations> = {
       donate: 'Donate',
     },
     hero: {
-      title: 'Give Your Sadaka2. Change Lives.',
+      title: 'Give Your Sadaka. Change Lives.',
       subtitle: 'Your donation reaches those who need it most.',
       cta: 'Donate Now',
     },
