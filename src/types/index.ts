@@ -1,7 +1,18 @@
 export type Language = 'ar' | 'fr' | 'en';
 
+export type CampaignCategory =
+  | 'orphans-widows'
+  | 'health'
+  | 'women-emergency'
+  | 'youth-sports'
+  | 'education'
+  | 'ramadan'
+  | 'seasonal'
+  | 'general';
+
 export interface Campaign {
   id: string;
+  category: CampaignCategory;
   titleAr: string;
   titleFr: string;
   titleEn: string;
@@ -13,7 +24,17 @@ export interface Campaign {
   detailFr?: string;
   detailEn?: string;
   goal?: number;
-  beneficiaries?: string;
+  beneficiariesAr?: string;
+  beneficiariesFr?: string;
+  beneficiariesEn?: string;
+}
+
+export interface CategoryInfo {
+  id: CampaignCategory;
+  titleAr: string;
+  titleFr: string;
+  titleEn: string;
+  icon: string;
 }
 
 export interface Translations {

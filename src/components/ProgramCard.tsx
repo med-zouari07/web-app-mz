@@ -32,6 +32,13 @@ export default function ProgramCard({ campaign, language, translations }: Progra
       ? campaign.detailFr || campaign.descriptionFr
       : campaign.detailEn || campaign.descriptionEn;
 
+  const beneficiaries =
+    language === 'ar'
+      ? campaign.beneficiariesAr
+      : language === 'fr'
+      ? campaign.beneficiariesFr
+      : campaign.beneficiariesEn;
+
   const isRTL = language === 'ar';
 
   return (
@@ -118,7 +125,7 @@ export default function ProgramCard({ campaign, language, translations }: Progra
                         </div>
                       </div>
                     )}
-                    {campaign.beneficiaries && (
+                    {beneficiaries && (
                       <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100">
                         <div className="flex items-center gap-3">
                           <div className="bg-blue-500 rounded-lg p-2">
@@ -129,7 +136,7 @@ export default function ProgramCard({ campaign, language, translations }: Progra
                               {translations.programs.beneficiaries}
                             </p>
                             <p className="text-lg font-bold text-blue-700">
-                              {campaign.beneficiaries}
+                              {beneficiaries}
                             </p>
                           </div>
                         </div>

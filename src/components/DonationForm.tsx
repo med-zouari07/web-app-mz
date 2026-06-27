@@ -168,10 +168,10 @@ export default function DonationForm({ language, translations }: DonationFormPro
           <div className={`mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded ${isRTL ? 'border-r-4 border-l-0' : ''}`}>
             <p className="text-gray-700 text-base leading-relaxed">
               {language === 'ar'
-                ? 'يمكنكم إيداع تبرعاتكم مباشرة في حسابنا البنكي. يرجى إرسال إيصال التحويل عبر الواتساب على الرقم 0666932107 لأجل التعامل مع تبرعكم وتوجيهه للبرنامج المطلوب.'
+                ? 'يمكنكم إيداع تبرعاتكم مباشرة في حسابنا البنكي. يرجى إرسال إيصال التحويل عبر الواتساب على الرقم +212 666 932 107 لأجل التعامل مع تبرعكم وتوجيهه للبرنامج المطلوب.'
                 : language === 'fr'
-                ? 'Vous pouvez déposer vos dons directement sur notre compte bancaire. Veuillez envoyer le reçu de virement par WhatsApp au 0666932107 pour que nous puissions traiter votre don et l\'affecter au programme souhaité.'
-                : 'You can deposit your donations directly into our bank account. Please send the transfer receipt via WhatsApp to 0666932107 so we can process your donation and direct it to the desired program.'}
+                ? 'Vous pouvez déposer vos dons directement sur notre compte bancaire. Veuillez envoyer le reçu de virement par WhatsApp au +212 666 932 107 pour que nous puissions traiter votre don et l\'affecter au programme souhaité.'
+                : 'You can deposit your donations directly into our bank account. Please send the transfer receipt via WhatsApp to +212 666 932 107 so we can process your donation and direct it to the desired program.'}
             </p>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default function DonationForm({ language, translations }: DonationFormPro
              language === 'fr' ? 'Contactez-nous au: ' :
              'Contact us at: '}
             <a href="tel:+212666932107" className="font-bold hover:underline">
-              0666932107
+              +212 666 932 107
             </a>
           </p>
         </div>

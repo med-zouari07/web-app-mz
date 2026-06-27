@@ -33,7 +33,7 @@ export default function About({ translations }: AboutProps) {
               <p className="font-semibold text-gray-900 mb-1">
                 {translations.about.phone}
               </p>
-              <p className="text-gray-700">0546051494</p>
+              <p className="text-gray-700">+212 546 051 494</p>
             </div>
           </div>
 
@@ -43,7 +43,7 @@ export default function About({ translations }: AboutProps) {
               <p className="font-semibold text-gray-900 mb-1">
                 {translations.about.mobile}
               </p>
-              <p className="text-gray-700">0666932107</p>
+              <p className="text-gray-700">+212 666 932 107</p>
             </div>
           </div>
 
