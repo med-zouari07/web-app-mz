@@ -68,6 +68,11 @@ export default function Footer({ translations }: FooterProps) {
         </div>
 
         <div className="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+          <img
+            src="/logo.png"
+            alt="Association Bon Voisinage"
+            className="h-14 w-auto mx-auto mb-3 brightness-0 invert"
+          />
           <p>{translations.footer.copyright}</p>
         </div>
       </div>
